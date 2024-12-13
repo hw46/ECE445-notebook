@@ -1,0 +1,98 @@
+Date: September 30, 2024
+Objective: Design Document Submission and Proposal Regrade
+Record:
+
+Main Ideas from Project Proposal:
+Emphasized the integration of user-friendly controls and real-time feedback mechanisms to enhance the usability and effectiveness of the robotic assistant.
+
+Reviewed technical documentation for the Adafruit TB6612 motor driver breakout boards to ensure correct implementation.
+Studied user interface design principles for developing an intuitive Android application.
+Diagrams and Schematics:
+
+Submitted the final Design Document by 11:59 PM, ensuring all subsystem overviews, block diagrams, detailed schematics, and design considerations are thoroughly documented.
+Figure 11: Final Design Document Excerpt
+Design Problems and Decisions:
+
+Subsystem Integration: Ensured that all subsystems are designed to operate cohesively, with clear communication protocols between the Car System and Remote System.
+Component Sizing: Verified that all components, especially voltage regulators and motor drivers, are appropriately rated for their respective loads to prevent overloading and ensure longevity.
+
+Confirmed that the power supply can handle the total power consumption with a safety margin.
+Documentation of Testing and Debugging Process:
+
+Requested Proposal Regrade by 11:59 PM to incorporate any necessary revisions based on initial feedback from instructors.
+Reviewed the Design Document with team members to ensure completeness and accuracy before submission.
+Important Notes for Debugging:
+
+Ensure that all voltage regulators are correctly soldered and connected to prevent voltage drops or fluctuations.
+Verify that all motor drivers are receiving clean and stable signals from the microcontroller.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Identified potential issues with voltage drops due to long trace lengths on the PCB and planned to minimize trace lengths in the final design.
+Proposed using thicker traces for high-current paths to reduce resistance and prevent voltage drops.
+Documentation of New Tests:
+
+Planned to perform load testing on the power subsystem to verify voltage stability under maximum expected loads.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled to conduct comprehensive testing of all subsystems during the Design Review on October 7.
+Topic Outlines for Reports:
+
+Developed outlines for the Tolerance Analysis section, detailing potential risks and mitigation strategies to ensure system reliability.
+
+
+
+
+
+
+
+
+Date: October 1, 2024
+Objective: Finalize Design Document
+Record:
+
+Main Ideas from Project Proposal:
+Focused on the seamless integration of mechanical and electronic subsystems to create a reliable and efficient robotic assistant, emphasizing user control and system responsiveness.
+
+Bibliographic References:
+
+Reviewed additional sources on thermal management techniques for voltage regulators to prevent overheating.
+Consulted user interface design guidelines to enhance the Android application's usability.
+Diagrams and Schematics:
+
+Reviewed and updated the Control Subsystem schematic to incorporate feedback from team members, ensuring all connections are correctly represented.
+Figure 12: Updated Control Subsystem Schematic
+Design Problems and Decisions:
+
+Thermal Management: Decided to incorporate heat sinks on voltage regulators and motor drivers to dissipate excess heat during operation.
+Signal Filtering: Implemented low-pass filters on PWM signal lines to reduce noise and improve signal integrity.
+Equations and Formulas:
+
+Signal Filtering Equation:
+Calculated the cutoff frequency for the low-pass filters to effectively eliminate high-frequency noise.
+𝑓𝑐=12𝜋𝑅𝐶f c = 2πRC1
+​
+Chose 𝑅=1𝑘Ω
+R=1kΩ and 𝐶=0.1𝜇𝐹
+C=0.1μF to achieve 𝑓𝑐≈1.59𝑘𝐻𝑧f c≈1.59kHz, effectively filtering out high-frequency noise above this threshold.
+Documentation of Testing and Debugging Process:
+
+Reviewed feedback on the Design Document and began making necessary adjustments to subsystem descriptions and schematics.
+Verified that all voltage regulation calculations align with the LM1117 specifications to prevent overheating and ensure stable power delivery.
+Important Notes for Debugging:
+
+Monitor the temperature of voltage regulators and motor drivers during initial power-up tests to ensure effective thermal management.
+Ensure that all filter components are correctly placed to maximize noise reduction without affecting signal integrity.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Identified potential signal interference between high-current motor drivers and sensitive microcontroller inputs. Proposed using shielded cables and proper grounding techniques to mitigate interference.
+Planned to implement decoupling capacitors near the microcontroller to stabilize power supply and reduce noise.
+Documentation of New Tests:
+
+Scheduled to perform thermal tests on voltage regulators and motor drivers under load to verify the effectiveness of heat sinks.
+Planned to test the low-pass filters using an oscilloscope to ensure effective noise reduction.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled comprehensive subsystem integration tests during the Design Review to validate overall system functionality and performance.
+Topic Outlines for Reports:
+
+Finalized the Tolerance Analysis and Design Alternatives sections, detailing the risk assessments, identified issues, and implemented solutions to enhance system reliability.
