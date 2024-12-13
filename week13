@@ -1,0 +1,89 @@
+Date: November 18, 2024
+Objective: Mock Demonstration
+Record:
+
+Main Ideas from Project Proposal:
+Highlighted the importance of conducting mock demonstrations to identify and rectify potential issues before the final presentation, ensuring a smooth and successful showcase of the robotic assistant's capabilities.
+
+Reviewed additional resources on effective demonstration techniques to enhance the clarity and impact of the mock demo.
+Consulted troubleshooting guides for common servo motor issues to prepare for potential challenges during the demonstration.
+Diagrams and Schematics:
+
+Prepared the final Design Document excerpts for the mock demonstration, ensuring all subsystem details and design considerations are accurately presented.
+Design Problems and Decisions:
+
+Servo Motor Torque: Identified that the upgraded servo motors were insufficient to handle the increased torque demands during the demonstration. Decided to further upgrade to even higher-torque servo motors to meet performance requirements.
+Power Stability: Noted that the power supply was experiencing minor fluctuations during extended servo motor operation and decided to implement additional capacitors to enhance voltage stability.
+
+Confirmed that the upgraded servo motors provide at least 1.961Nm, exceeding the required torque by a margin to ensure reliable performance.
+Documentation of Testing and Debugging Process:
+
+Conducted a mock demonstration during the weekly TA meeting, showcasing the robotic arm's item retrieval and transportation capabilities.
+Observed issues with servo motor responsiveness and power stability during the demonstration, leading to the identification of necessary design adjustments.
+Documented all issues encountered, including delayed servo responses and voltage fluctuations, and discussed potential solutions with team members.
+Important Notes for Debugging:
+
+Ensure that all servo motors are adequately cooled during extended operations to prevent thermal throttling.
+Verify that the additional capacitors are correctly placed near voltage regulators to maximize their effectiveness in stabilizing voltage supply.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Determined that the current PWM signal generation method was insufficient for handling rapid and simultaneous servo motor commands. Proposed implementing interrupt-driven PWM signal generation to enhance responsiveness.
+Identified that the power supply's capacity was marginally insufficient for the upgraded servo motors and proposed integrating a secondary power supply channel to distribute the load more effectively.
+Documentation of New Tests:
+
+Scheduled to implement and test the interrupt-driven PWM signal generation in the firmware to improve servo motor responsiveness.
+Planned to perform extensive power stability tests with the additional capacitors to ensure voltage fluctuations are minimized during high-load operations.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled comprehensive system integration tests post-mock demonstration to validate all design enhancements and ensure readiness for the final demonstration.
+Topic Outlines for Reports:
+
+Updated the Conclusion section to include insights gained from the mock demonstration, detailing the issues encountered and the solutions implemented to enhance system performance and reliability.
+
+
+
+
+
+
+Date: November 19, 2024
+Objective: Addressing Servo Motor Issues
+Record:
+
+Main Ideas from Project Proposal:
+Focused on resolving servo motor torque insufficiencies and enhancing power supply stability to ensure the robotic assistant operates reliably under all conditions.
+
+Reviewed advanced servo motor control techniques to optimize torque performance and responsiveness.
+Consulted additional datasheets for higher-torque servo motors to select appropriate replacements.
+Diagrams and Schematics:
+
+Updated the Control Subsystem schematic to incorporate the new higher-torque servo motors and the dedicated secondary power supply channel.
+Design Problems and Decisions:
+
+Servo Motor Selection: Upgraded to LDX-218 servo motors capable of generating 1.961Nm torque at 8.4V to meet the increased torque demands of the extended robotic arm.
+Power Supply Enhancement: Implemented an additional dedicated power supply channel with a higher current capacity to support the upgraded servo motors without overloading existing voltage regulators.
+Equations and Formulas:
+
+Ensured that the power supply can handle the increased total power consumption with a safety margin.
+Documentation of Testing and Debugging Process:
+
+Upgraded the servo motors on the robotic arm and connected them to the dedicated power supply channel.
+Conducted torque tests to verify that the new servo motors can handle the required load without stalling or missing steps.
+Implemented interrupt-driven PWM signal generation in the firmware to enhance servo motor responsiveness and reduce latency.
+Important Notes for Debugging:
+
+Monitor the performance of the new servo motors under load to ensure they operate within safe temperature ranges.
+Verify that the secondary power supply channel provides stable voltage without introducing noise or interference into the system.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Detected improved servo motor responsiveness and torque handling with the upgraded motors and enhanced PWM signal generation.
+Noted minor voltage fluctuations during peak load conditions and proposed increasing the capacitance on the secondary power supply channel to further stabilize voltage.
+Documentation of New Tests:
+
+Scheduled to perform extended torque and load tests on the upgraded servo motors to ensure consistent performance under all operating conditions.
+Planned to monitor voltage stability across both primary and secondary power supply channels during high-load operations.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled comprehensive system integration tests to validate the performance of the upgraded servo motors and enhanced power supply system, ensuring all design requirements are met.
+Topic Outlines for Reports:
+
+Updated the Future Work section to include plans for implementing advanced control algorithms and further optimizing power distribution to enhance system performance.
