@@ -1,0 +1,67 @@
+Date: September 16, 2024
+Objective: Soldering Assignment and Proposal Completion
+Record:
+
+Main Ideas from Project Proposal:
+Highlighted the importance of precise soldering and PCB assembly to ensure reliable electrical connections and overall system stability.
+
+Finalized the complete schematic for the Car System, integrating power regulation, motor control, and communication modules.
+
+Voltage Regulation: Ensured that the LM1117 voltage regulators are correctly configured to provide the necessary voltages for servo and wheel motors without exceeding their maximum input voltage specifications.
+Component Placement: Optimized PCB layout to minimize noise and interference between high-current motor drivers and sensitive microcontroller circuitry.
+
+Verify that all solder joints are secure and free from bridges to prevent short circuits.
+Use thermal paste or heat sinks on voltage regulators if operating near their maximum thermal limits.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Planned to simulate the Car System's power regulation on a breadboard to verify stability before final PCB assembly.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled comprehensive testing of the power subsystem post-assembly to ensure reliable voltage outputs under load.
+Topic Outlines for Reports:
+
+Outlined the Design Alternatives section, preparing to discuss potential issues with motor drivers and voltage regulators, and the solutions implemented.
+
+
+
+
+Date: September 17, 2024
+Objective: Design Review Preparation
+Record:
+
+Main Ideas from Project Proposal:
+Reinforced the necessity of integrating robust design review processes to identify and mitigate potential issues early in the development cycle.
+
+Bibliographic References:
+
+Reviewed additional sources on PCB design best practices and thermal management in electronic circuits.
+Diagrams and Schematics:
+
+Developed the final Design Document outline, incorporating subsystem overviews, block diagrams, and detailed schematics for each subsystem.
+Figure 8: Final Design Document Outline
+Design Problems and Decisions:
+
+Design Review Sign-Up: Opened Design Review Sign-up for September 23, ensuring all team members are prepared to present their subsystem designs.
+PCB Design Considerations: Focused on minimizing signal interference by segregating high-power and low-power components on the PCB.
+Equations and Formulas:
+
+Power Consumption Calculations:
+Calculated expected power consumption for each subsystem to ensure the power supply can handle the total load.
+𝑃=𝑉×𝐼
+P=V×I
+Servo Motors:
+𝑃𝑠𝑒𝑟𝑣𝑜=7.8𝑉×0.2𝐴=1.56𝑊 Pservo=7.8V×0.2A=1.56W
+Wheel Motors:
+𝑃𝑤ℎ𝑒𝑒𝑙=10.8𝑉×0.5𝐴=5.4𝑊 Pwheel=10.8V×0.5A=5.4W
+Documentation of Testing and Debugging Process:
+
+Reviewed the Design Document with team members, ensuring all sections are complete and accurate.
+Prepared presentation slides for the upcoming Design Review, highlighting key design decisions and challenges.
+
+Anticipated potential issues with motor control responsiveness due to high PWM frequencies. Proposed adjusting PWM settings to optimize performance without introducing excessive noise.
+Documentation of New Tests:
+
+Planned to conduct signal integrity tests on PWM lines to ensure clean and stable motor control signals.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled to perform comprehensive subsystem integration tests during the Design Review on September 23.
