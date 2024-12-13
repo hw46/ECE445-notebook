@@ -1,0 +1,339 @@
+
+package com.example.roboticassistantcontroller
+
+import android.Manifest
+import android.app.Activity
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothGatt
+import android.bluetooth.BluetoothGattCallback
+import android.bluetooth.BluetoothGattCharacteristic
+import android.bluetooth.BluetoothGattService
+import android.bluetooth.BluetoothManager
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+
+class MainActivity : AppCompatActivity() {
+
+    private val TAG = "MainActivity"
+
+    // BLE Constants
+    private val SERVICE_UUID = "12345678-1234-1234-1234-1234567890ab"
+    private val CHARACTERISTIC_UUID = "87654321-4321-4321-4321-ba0987654321"
+
+    private var bluetoothAdapter: BluetoothAdapter? = null
+    private var bluetoothGatt: BluetoothGatt? = null
+    private var bluetoothDevice: BluetoothDevice? = null
+    private var controlCharacteristic: BluetoothGattCharacteristic? = null
+
+    // UI Elements
+    private lateinit var tvStatus: TextView
+    private lateinit var btnConnect: Button
+
+    private lateinit var btnForward: Button
+    private lateinit var btnBackward: Button
+    private lateinit var btnTurnLeft: Button
+    private lateinit var btnTurnRight: Button
+
+    private lateinit var btnServo1Up: Button
+    private lateinit var btnServo1Down: Button
+    private lateinit var btnServo2Up: Button
+    private lateinit var btnServo2Down: Button
+    private lateinit var btnServo3Up: Button
+    private lateinit var btnServo3Down: Button
+    private lateinit var btnServo4Up: Button
+    private lateinit var btnServo4Down: Button
+
+    private lateinit var btnGripperOpen: Button
+    private lateinit var btnGripperClose: Button
+
+    // Handler for delayed tasks
+    private val handler = Handler(Looper.getMainLooper())
+
+    // Activity Result Launcher for enabling Bluetooth
+    private val enableBluetoothLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // Bluetooth enabled
+            Toast.makeText(this, "Bluetooth Enabled", Toast.LENGTH_SHORT).show()
+            startScan()
+        } else {
+            // User did not enable Bluetooth
+            Toast.makeText(this, "Bluetooth not enabled", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // Initialize UI elements
+        tvStatus = findViewById(R.id.tvStatus)
+        btnConnect = findViewById(R.id.btnConnect)
+
+        btnForward = findViewById(R.id.btnForward)
+        btnBackward = findViewById(R.id.btnBackward)
+        btnTurnLeft = findViewById(R.id.btnTurnLeft)
+        btnTurnRight = findViewById(R.id.btnTurnRight)
+
+        btnServo1Up = findViewById(R.id.btnServo1Up)
+        btnServo1Down = findViewById(R.id.btnServo1Down)
+        btnServo2Up = findViewById(R.id.btnServo2Up)
+        btnServo2Down = findViewById(R.id.btnServo2Down)
+        btnServo3Up = findViewById(R.id.btnServo3Up)
+        btnServo3Down = findViewById(R.id.btnServo3Down)
+        btnServo4Up = findViewById(R.id.btnServo4Up)
+        btnServo4Down = findViewById(R.id.btnServo4Down)
+
+        btnGripperOpen = findViewById(R.id.btnGripperOpen)
+        btnGripperClose = findViewById(R.id.btnGripperClose)
+
+        // Disable buttons until connected
+        setButtonsEnabled(false)
+
+        // Initialize Bluetooth
+        val bluetoothManager = getSystemService(BLUETOOTH_SERVICE) as BluetoothManager
+        bluetoothAdapter = bluetoothManager.adapter
+
+        // Set Connect button listener
+        btnConnect.setOnClickListener {
+            if (bluetoothAdapter == null) {
+                Toast.makeText(this, "Bluetooth not supported", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (!bluetoothAdapter!!.isEnabled) {
+                // Prompt user to enable Bluetooth
+                val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+                enableBluetoothLauncher.launch(enableBtIntent)
+            } else {
+                // Start scanning
+                startScan()
+            }
+        }
+
+        // Set Motor Control Button Listeners
+        setMotorButtonListeners()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        bluetoothGatt?.close()
+        bluetoothGatt = null
+    }
+
+    private fun setButtonsEnabled(enabled: Boolean) {
+        btnForward.isEnabled = enabled
+        btnBackward.isEnabled = enabled
+        btnTurnLeft.isEnabled = enabled
+        btnTurnRight.isEnabled = enabled
+
+        btnServo1Up.isEnabled = enabled
+        btnServo1Down.isEnabled = enabled
+        btnServo2Up.isEnabled = enabled
+        btnServo2Down.isEnabled = enabled
+        btnServo3Up.isEnabled = enabled
+        btnServo3Down.isEnabled = enabled
+        btnServo4Up.isEnabled = enabled
+        btnServo4Down.isEnabled = enabled
+
+        btnGripperOpen.isEnabled = enabled
+        btnGripperClose.isEnabled = enabled
+    }
+
+    private fun setMotorButtonListeners() {
+        btnForward.setOnClickListener { sendCommand("CAR_FORWARD") }
+        btnBackward.setOnClickListener { sendCommand("CAR_BACKWARD") }
+        btnTurnLeft.setOnClickListener { sendCommand("CAR_LEFT") }
+        btnTurnRight.setOnClickListener { sendCommand("CAR_RIGHT") }
+
+        btnServo1Up.setOnClickListener { sendCommand("SERVO1_UP") }
+        btnServo1Down.setOnClickListener { sendCommand("SERVO1_DOWN") }
+        btnServo2Up.setOnClickListener { sendCommand("SERVO2_UP") }
+        btnServo2Down.setOnClickListener { sendCommand("SERVO2_DOWN") }
+        btnServo3Up.setOnClickListener { sendCommand("SERVO3_UP") }
+        btnServo3Down.setOnClickListener { sendCommand("SERVO3_DOWN") }
+        btnServo4Up.setOnClickListener { sendCommand("SERVO4_UP") }
+        btnServo4Down.setOnClickListener { sendCommand("SERVO4_DOWN") }
+
+        btnGripperOpen.setOnClickListener { sendCommand("GRIPPER_OPEN") }
+        btnGripperClose.setOnClickListener { sendCommand("GRIPPER_CLOSE") }
+    }
+
+    private fun startScan() {
+        tvStatus.text = "Status: Scanning for Devices..."
+        Log.d(TAG, "Starting BLE scan...")
+
+        // Stop any ongoing scans
+        bluetoothAdapter?.bluetoothLeScanner?.stopScan(leScanCallback)
+
+        // Start new scan
+        bluetoothAdapter?.bluetoothLeScanner?.startScan(leScanCallback)
+
+        // Stop scan after 10 seconds
+        handler.postDelayed({
+            bluetoothAdapter?.bluetoothLeScanner?.stopScan(leScanCallback)
+            Log.d(TAG, "BLE scan stopped.")
+            if (bluetoothDevice == null) {
+                tvStatus.text = "Status: Device Not Found"
+                Toast.makeText(this, "Device not found", Toast.LENGTH_SHORT).show()
+            }
+        }, 10000)
+    }
+
+    // Define the BLE scan callback
+    private val leScanCallback = android.bluetooth.le.ScanCallback()
+    {
+        override fun onScanResult(callbackType: Int, result: android.bluetooth.le.ScanResult?) {
+            super.onScanResult(callbackType, result)
+            result?.device?.let { device ->
+                Log.d(TAG, "Found device: ${device.name} - ${device.address}")
+                if (device.name != null && device.name == "RoboticAssistant") {
+                    bluetoothDevice = device
+                    tvStatus.text = "Status: Device Found. Connecting..."
+                    bluetoothAdapter?.bluetoothLeScanner?.stopScan(this)
+                    connectToDevice(device)
+                }
+            }
+        }
+
+        override fun onScanFailed(errorCode: Int) {
+            super.onScanFailed(errorCode)
+            Log.e(TAG, "BLE Scan Failed with code $errorCode")
+            Toast.makeText(this@MainActivity, "Scan Failed: $errorCode", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun connectToDevice(device: BluetoothDevice) {
+        bluetoothGatt = device.connectGatt(this, false, gattCallback)
+    }
+
+    private val gattCallback = object : BluetoothGattCallback() {
+        override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
+            super.onConnectionStateChange(gatt, status, newState)
+            if (newState == BluetoothGatt.STATE_CONNECTED) {
+                Log.i(TAG, "Connected to GATT server.")
+                runOnUiThread {
+                    tvStatus.text = "Status: Connected. Discovering Services..."
+                }
+                gatt.discoverServices()
+            } else if (newState == BluetoothGatt.STATE_DISCONNECTED) {
+                Log.i(TAG, "Disconnected from GATT server.")
+                runOnUiThread {
+                    tvStatus.text = "Status: Disconnected"
+                    setButtonsEnabled(false)
+                }
+            }
+        }
+
+        override fun onServicesDiscovered(gatt: BluetoothGatt, status: Int) {
+            super.onServicesDiscovered(gatt, status)
+            if (status == BluetoothGatt.GATT_SUCCESS) {
+                Log.i(TAG, "Services Discovered.")
+                val service: BluetoothGattService? = gatt.getService(SERVICE_UUID)
+                service?.let {
+                    controlCharacteristic = it.getCharacteristic(CHARACTERISTIC_UUID)
+                    runOnUiThread {
+                        if (controlCharacteristic != null) {
+                            tvStatus.text = "Status: Connected"
+                            setButtonsEnabled(true)
+                            Toast.makeText(this@MainActivity, "Connected to Robotic Assistant", Toast.LENGTH_SHORT).show()
+                        } else {
+                            tvStatus.text = "Status: Characteristic Not Found"
+                            Toast.makeText(this@MainActivity, "Characteristic not found", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            } else {
+                Log.w(TAG, "onServicesDiscovered received: $status")
+            }
+        }
+
+        override fun onCharacteristicWrite(
+            gatt: BluetoothGatt,
+            characteristic: BluetoothGattCharacteristic,
+            status: Int
+        ) {
+            super.onCharacteristicWrite(gatt, characteristic, status)
+            if (status == BluetoothGatt.GATT_SUCCESS) {
+                Log.i(TAG, "Characteristic Written Successfully")
+            } else {
+                Log.e(TAG, "Characteristic Write Failed: $status")
+            }
+        }
+    }
+
+    private fun sendCommand(command: String) {
+        if (controlCharacteristic == null) {
+            Toast.makeText(this, "Not connected to device", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        controlCharacteristic?.let {
+            it.value = command.toByteArray()
+            val success = bluetoothGatt?.writeCharacteristic(it)
+            if (success == true) {
+                Log.d(TAG, "Command Sent: $command")
+            } else {
+                Log.e(TAG, "Failed to send command: $command")
+                Toast.makeText(this, "Failed to send command", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    // Handle runtime permissions
+    override fun onStart() {
+        super.onStart()
+        checkPermissions()
+    }
+
+    private fun checkPermissions() {
+        val permissionsNeeded = mutableListOf<String>()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                permissionsNeeded.add(Manifest.permission.BLUETOOTH_SCAN)
+            }
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                permissionsNeeded.add(Manifest.permission.BLUETOOTH_CONNECT)
+            }
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                permissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION)
+            }
+        }
+
+        if (permissionsNeeded.isNotEmpty()) {
+            ActivityCompat.requestPermissions(this, permissionsNeeded.toTypedArray(), 1)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1) {
+            for (i in permissions.indices) {
+                if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Permission ${permissions[i]} denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+}
