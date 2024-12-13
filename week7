@@ -1,0 +1,86 @@
+Date: October 7, 2024
+Objective: Design Review and PCB Review
+Record:
+
+Main Ideas from Project Proposal:
+Emphasized the iterative design process and the importance of design reviews in identifying and addressing potential issues to enhance system reliability and performance.
+
+Reviewed additional datasheets and application notes for the LM1117 voltage regulator and TB6612 motor driver to ensure optimal implementation during the PCB layout phase.
+
+Power Stability Feedback: Received feedback highlighting the need for improved power stability during peak loads.
+Torque Optimization: Instructed to further optimize servo motor torque to handle increased load due to extended arm lengths.
+Equations and Formulas:
+
+Confirmed that the power supply can handle the total power consumption with a safety margin to prevent voltage drops.
+Documentation of Testing and Debugging Process:
+
+Attended PCB Review from 3:00 PM to 5:00 PM, discussing PCB layout optimizations to minimize noise and improve signal integrity.
+Documented feedback from both Design Review and PCB Review, noting areas for improvement and required changes.
+Important Notes for Debugging:
+
+Implemented suggestions to enhance thermal management by adding heat sinks and thermal vias on the PCB to dissipate heat effectively.
+Ensured that all high-current traces on the PCB are adequately sized to handle the expected load without excessive voltage drops.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Addressed the need for additional capacitors near voltage regulators to stabilize power supply during peak loads.
+Proposed re-routing of signal lines to separate high-power and low-power sections on the PCB to reduce electromagnetic interference.
+Documentation of New Tests:
+
+Planned to perform power stability tests using an oscilloscope to monitor voltage levels under varying load conditions.
+Scheduled servo motor torque tests with the extended robotic arm to verify performance enhancements.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled comprehensive PCB functionality tests to ensure all connections are correct and components operate as intended.
+Topic Outlines for Reports:
+
+Updated the Design Alternatives section to include feedback received during the Design Review, detailing the changes made to address identified issues.
+
+
+
+
+
+
+
+Date: October 8, 2024
+Objective: Incorporate Design Review Feedback
+Record:
+
+Main Ideas from Project Proposal:
+Reinforced the necessity of addressing feedback from design reviews to enhance system robustness and reliability, ensuring the robotic assistant meets all specified requirements.
+
+Bibliographic References:
+
+Reviewed additional resources on thermal management and signal integrity to implement effective solutions based on Design Review feedback.
+Diagrams and Schematics:
+
+Updated the PCB layout based on feedback from the PCB Review, ensuring optimal component placement and trace routing to minimize noise and interference.
+Figure 14: Updated PCB Layout
+Design Problems and Decisions:
+
+Thermal Management Enhancements: Incorporated heat sinks and thermal vias into the PCB design to improve heat dissipation from voltage regulators and motor drivers.
+Signal Routing: Re-routed PWM and control signals away from high-current traces to reduce electromagnetic interference and improve signal integrity.
+Equations and Formulas:
+
+Selected heat sinks with thermal resistance lower than 64.1°C/W to maintain safe temperatures.
+Documentation of Testing and Debugging Process:
+
+Implemented the updated PCB layout and began soldering components for testing.
+Conducted preliminary power stability tests to verify the effectiveness of added capacitors and heat sinks.
+Important Notes for Debugging:
+
+Continuously monitor temperature readings during testing to ensure thermal management solutions are effective.
+Verify that all PWM signals maintain their integrity after re-routing to prevent control issues.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Noted minor voltage fluctuations during load testing and proposed increasing the capacitance on the power lines to enhance stability.
+Identified potential interference sources and planned to implement shielding where necessary to further reduce noise.
+Documentation of New Tests:
+
+Scheduled comprehensive power stability tests under maximum load conditions to validate the effectiveness of thermal management and voltage regulation enhancements.
+Planned to use an oscilloscope to analyze PWM signal integrity post-re-routing.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled to perform final subsystem integration tests, ensuring all components operate harmoniously and meet the design specifications.
+Topic Outlines for Reports:
+
+Updated the Tolerance Analysis section to reflect the enhanced thermal management and signal integrity measures implemented based on Design Review feedback.
