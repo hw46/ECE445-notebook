@@ -1,0 +1,91 @@
+Date: November 4, 2024
+Objective: Fourth Round PCBway Orders and Progress Reporting
+Record:
+
+Main Ideas from Project Proposal:
+Continued the iterative design process, focusing on refining the PCB layout and ensuring that all components are correctly integrated to achieve optimal system performance.
+
+Reviewed additional technical documentation for the ESP32 microcontroller to optimize firmware performance and reduce latency in Bluetooth communication.
+Consulted resources on advanced PCB layout techniques to further minimize noise and interference in signal traces.
+Diagrams and Schematics:
+
+Submitted the Fourth Round PCBway Orders by 4:45 PM after passing the audit, incorporating all necessary design modifications to address previous testing feedback.
+Design Problems and Decisions:
+
+Component Integration: Ensured that all additional components, including the dedicated voltage regulator for servo motors, are correctly placed and connected in the PCB layout.
+Firmware Optimization: Decided to implement more efficient PWM signal generation techniques to enhance servo motor responsiveness and reduce latency in control signals.
+
+Chose a PWM frequency of 1kHz to balance control resolution and signal stability.
+Documentation of Testing and Debugging Process:
+
+Submitted individual progress reports by 11:59 PM, detailing each team member's contributions and the current status of their assigned tasks.
+Reviewed the progress reports collectively, identifying any gaps or areas requiring additional focus to stay on track with the project timeline.
+Important Notes for Debugging:
+
+Ensure that all additional voltage regulators are adequately cooled to prevent overheating during prolonged operations.
+Verify that the firmware correctly handles simultaneous control of multiple servo motors without introducing delays or missed signals.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Identified that the newly added voltage regulator was slightly overheating under load and proposed adding a heat sink to improve thermal performance.
+Noted potential issues with firmware timing and planned to implement interrupt-driven PWM signal generation to enhance responsiveness.
+Documentation of New Tests:
+
+Scheduled to test the functionality of the dedicated voltage regulator under maximum load conditions to ensure stable power delivery to servo motors.
+Planned to perform firmware stress tests, simulating rapid and simultaneous control commands to verify the system's responsiveness and reliability.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled full subsystem integration tests once the Fourth Round PCBs are received and assembled, ensuring that all components operate cohesively and meet design specifications.
+Topic Outlines for Reports:
+
+Updated the Design Alternatives section to include the implementation of dedicated voltage regulation for servo motors, detailing the benefits and challenges associated with this enhancement.
+
+
+
+
+
+
+Date: November 5, 2024
+Objective: PCB Assembly and Testing
+Record:
+
+Main Ideas from Project Proposal:
+Focused on the assembly and rigorous testing of the PCB to ensure that all electronic components function correctly and cohesively, forming the backbone of the robotic assistant.
+
+Reviewed assembly guides and best practices for soldering SMD (Surface Mount Device) components to ensure high-quality PCB assembly.
+Consulted troubleshooting guides for common PCB issues, such as cold solder joints and component misalignment.
+Diagrams and Schematics:
+
+Assembled the PCBs received from the machine shop, ensuring all components are correctly oriented and securely soldered.
+Design Problems and Decisions:
+
+Soldering Precision: Emphasized the need for precise soldering to prevent short circuits and ensure reliable connections.
+Component Alignment: Ensured that all components, especially the microcontroller and motor drivers, are correctly aligned according to the PCB layout to prevent functionality issues.
+Equations and Formulas:
+
+Solder Joint Quality Equation:
+Evaluated solder joint quality based on the following criteria:
+Joint Quality=Shiny Surface+Proper Wetting+No Excess Flux
+Ensured that each solder joint is shiny, well-wetted, and free from excess flux to guarantee electrical conductivity and mechanical stability.
+Documentation of Testing and Debugging Process:
+
+Performed continuity tests on all critical traces to ensure there are no open or short circuits using a multimeter.
+Tested voltage outputs from each voltage regulator under no-load conditions to verify initial functionality.
+Conducted initial servo motor tests by sending simple control signals from the ESP32 to verify responsiveness and torque handling.
+Important Notes for Debugging:
+
+Double-check the orientation of polarized components, such as electrolytic capacitors and voltage regulators, to prevent reverse biasing.
+Ensure that all connections are secure and free from solder bridges that could cause short circuits.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Detected minor voltage fluctuations during initial testing and proposed adding additional decoupling capacitors to enhance voltage stability.
+Noted that some servo motors exhibited delayed responses and planned to optimize PWM signal generation in the firmware.
+Documentation of New Tests:
+
+Scheduled comprehensive load testing of voltage regulators to ensure stable voltage outputs under maximum current draw.
+Planned to perform detailed servo motor torque tests to verify their performance under extended load conditions.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled to integrate the PCB with the mechanical and control subsystems in the upcoming weeks, ensuring that all components operate cohesively and meet design specifications.
+Topic Outlines for Reports:
+
+Updated the Tolerance Analysis section to include the results from the initial PCB assembly and testing, detailing any issues encountered and solutions implemented to enhance system reliability.
