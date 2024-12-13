@@ -1,0 +1,73 @@
+Date: September 9, 2024
+Objective: Project Approval and Team Structuring
+Record:
+
+Main Ideas from Project Proposal:
+Confirmed the project's alignment with course objectives and societal needs, focusing on enhancing the quality of life for individuals with mobility challenges through technological innovation.
+
+Reviewed additional sources on H-bridge motor control and servo motor torque specifications.
+Consulted academic journals on user interface design for robotic systems.
+Design Problems and Decisions:
+
+Motor Control: Decided to use separate H-bridge drivers for each wheel motor to enable independent control and precise maneuvering.
+Servo Motor Placement: Strategically positioned servo motors on the robotic arm to optimize torque distribution and movement efficiency.
+Equations and Formulas:
+
+H-Bridge Motor Control Equations:
+Defined the logic for controlling motor direction and speed using PWM signals.
+PWM Duty Cycle=(Desired SpeedMaximum Speed)×100%PWM Duty Cycle=( Maximum SpeedDesired Speed)×100%
+Documentation of Testing and Debugging Process:
+
+Attended the third class meeting from 4:00 PM to 5:50 PM.
+Submitted the Project Approval by 11:59 PM, outlining detailed project goals, methodologies, and expected outcomes.
+
+Ensure that PWM signals are accurately generated to control motor speed without introducing noise.
+Verify that the H-bridge drivers are capable of handling the current requirements of the wheel motors.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Identified potential issues with motor overheating and planned to implement cooling solutions if necessary.
+Proposed using shielded cables for motor connections to minimize electromagnetic interference.
+Documentation of New Tests:
+
+Planned to test the H-bridge motor drivers on breadboards before integrating them into the PCB.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled subsystem integration tests for the upcoming weeks to ensure cohesive functionality.
+Topic Outlines for Reports:
+
+Outlined the Subsystem Requirements section, detailing specifications for the Car System and Remote System components.
+
+
+
+
+
+Date: September 10, 2024
+Objective: Team Organization and Initial Planning
+Record:
+
+Main Ideas from Project Proposal:
+Emphasized the integration of mechanical and electronic systems to create a cohesive and efficient robotic assistant, ensuring seamless communication and control between subsystems.
+
+Updated the Control Subsystem schematic to include the connections between the ESP32 microcontroller, H-bridge drivers, and servo motors.
+
+Bluetooth Communication: Decided to implement Bluetooth Low Energy (BLE) for efficient and low-latency communication between the Remote System and Car System.
+User Interface: Chose to develop the Android application using Android Studio to leverage existing libraries for joystick and switch controls.
+Equations and Formulas:
+
+Force Calculation for Servo Motors:𝐹=𝑚×𝑔F=m×gWhere 𝑚=0.2𝑘𝑔m=0.2kg, 𝑔=9.81𝑚/𝑠2g=9.81m/s 𝐹=0.2𝑘𝑔×9.81𝑚/𝑠2=1.962𝑁F=0.2kg×9.81m/s =1.962N
+Documentation of Testing and Debugging Process:
+
+Held the first official team meeting with TAs from 4:00 PM to 5:00 PM to discuss team roles and responsibilities.
+Assigned specific tasks to each team member based on their strengths and expertise.
+Initiated conversations with the machine shop to understand PCB manufacturing requirements and lead times.
+Important Notes for Debugging:
+
+Ensure that the ESP32 microcontroller firmware is optimized for real-time control to prevent lag in remote operations.
+Validate the Bluetooth range to ensure reliable communication within typical home environments.
+
+Scheduled initial BLE connectivity tests between the ESP32 module and the Android application to verify successful pairing and data transmission.
+
+Planned comprehensive testing of the Control Subsystem once integrated into the PCB to ensure responsive and accurate motor control.
+Topic Outlines for Reports:
+
+Developed outlines for the Remote User Interface and Control Subsystem sections, detailing design considerations and implementation strategies.
