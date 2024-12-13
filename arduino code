@@ -1,0 +1,321 @@
+#include <BLEDevice.h>
+#include <BLEUtils.h>
+#include <BLEServer.h>
+#include <Servo.h>
+
+// Define BLE Service and Characteristic UUIDs
+#define SERVICE_UUID        "12345678-1234-1234-1234-1234567890ab"
+#define CHARACTERISTIC_UUID "87654321-4321-4321-4321-ba0987654321"
+
+// Motor Driver Pins (TB6612)
+const int PWMA = 16; // PWM for Motor A (Left Wheel)
+const int AIN1 = 17;
+const int AIN2 = 5;
+const int PWMB = 18; // PWM for Motor B (Right Wheel)
+const int BIN1 = 19;
+const int BIN2 = 21;
+
+// Gripper Motor Pins (TB6612)
+const int PWMG = 27; // PWM for Gripper Motor
+const int GIN1 = 14;
+const int GIN2 = 12;
+
+// Servo Pins
+const int SERVO1_PIN = 22;
+const int SERVO2_PIN = 23;
+const int SERVO3_PIN = 25;
+const int SERVO4_PIN = 26;
+
+// Initialize Servos
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+
+// Define Motor Speeds
+const int MOTOR_SPEED = 150; // Range: 0-255
+
+// BLE Command Buffer
+std::string receivedCommand = "";
+
+// Callback class for handling BLE events
+class MyCallbacks: public BLECharacteristicCallbacks {
+    void onWrite(BLECharacteristic *pCharacteristic) {
+      receivedCommand = pCharacteristic->getValue();
+
+      if (receivedCommand.length() > 0) {
+        Serial.println("Received BLE Command: " + receivedCommand);
+        handleCommand(receivedCommand);
+      }
+    }
+};
+
+// Function to initialize motor pins
+void initMotors() {
+  // Initialize Motor A Pins (Left Wheel)
+  pinMode(AIN1, OUTPUT);
+  pinMode(AIN2, OUTPUT);
+  ledcSetup(0, 1000, 8); // Channel 0, 1kHz, 8-bit
+  ledcAttachPin(PWMA, 0);
+
+  // Initialize Motor B Pins (Right Wheel)
+  pinMode(BIN1, OUTPUT);
+  pinMode(BIN2, OUTPUT);
+  ledcSetup(1, 1000, 8); // Channel 1, 1kHz, 8-bit
+  ledcAttachPin(PWMB, 1);
+
+  // Initialize Gripper Motor Pins
+  pinMode(GIN1, OUTPUT);
+  pinMode(GIN2, OUTPUT);
+  ledcSetup(2, 1000, 8); // Channel 2, 1kHz, 8-bit
+  ledcAttachPin(PWMG, 2);
+
+  // Stop Motors Initially
+  stopMotors();
+  stopGripper();
+}
+
+// Function to initialize servos
+void initServos() {
+  servo1.attach(SERVO1_PIN);
+  servo2.attach(SERVO2_PIN);
+  servo3.attach(SERVO3_PIN);
+  servo4.attach(SERVO4_PIN);
+  
+  // Initialize servos to neutral position
+  servo1.write(90);
+  servo2.write(90);
+  servo3.write(90);
+  servo4.write(90);
+}
+
+// Function to stop all wheel motors
+void stopMotors() {
+  // Stop Motor A (Left Wheel)
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, LOW);
+  ledcWrite(0, 0);
+
+  // Stop Motor B (Right Wheel)
+  digitalWrite(BIN1, LOW);
+  digitalWrite(BIN2, LOW);
+  ledcWrite(1, 0);
+}
+
+// Function to stop gripper motor
+void stopGripper() {
+  digitalWrite(GIN1, LOW);
+  digitalWrite(GIN2, LOW);
+  ledcWrite(2, 0);
+}
+
+// Function to move car forward
+void moveForward() {
+  // Motor A forward
+  digitalWrite(AIN1, HIGH);
+  digitalWrite(AIN2, LOW);
+  ledcWrite(0, MOTOR_SPEED);
+
+  // Motor B forward
+  digitalWrite(BIN1, HIGH);
+  digitalWrite(BIN2, LOW);
+  ledcWrite(1, MOTOR_SPEED);
+
+  Serial.println("Action: Move Forward");
+}
+
+// Function to move car backward
+void moveBackward() {
+  // Motor A backward
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, HIGH);
+  ledcWrite(0, MOTOR_SPEED);
+
+  // Motor B backward
+  digitalWrite(BIN1, LOW);
+  digitalWrite(BIN2, HIGH);
+  ledcWrite(1, MOTOR_SPEED);
+
+  Serial.println("Action: Move Backward");
+}
+
+// Function to turn car left
+void turnLeft() {
+  // Motor A backward
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, HIGH);
+  ledcWrite(0, MOTOR_SPEED);
+
+  // Motor B forward
+  digitalWrite(BIN1, HIGH);
+  digitalWrite(BIN2, LOW);
+  ledcWrite(1, MOTOR_SPEED);
+
+  Serial.println("Action: Turn Left");
+}
+
+// Function to turn car right
+void turnRight() {
+  // Motor A forward
+  digitalWrite(AIN1, HIGH);
+  digitalWrite(AIN2, LOW);
+  ledcWrite(0, MOTOR_SPEED);
+
+  // Motor B backward
+  digitalWrite(BIN1, LOW);
+  digitalWrite(BIN2, HIGH);
+  ledcWrite(1, MOTOR_SPEED);
+
+  Serial.println("Action: Turn Right");
+}
+
+// Function to open gripper
+void openGripper() {
+  digitalWrite(GIN1, HIGH);
+  digitalWrite(GIN2, LOW);
+  ledcWrite(2, MOTOR_SPEED);
+  
+  Serial.println("Action: Open Gripper");
+}
+
+// Function to close gripper
+void closeGripper() {
+  digitalWrite(GIN1, LOW);
+  digitalWrite(GIN2, HIGH);
+  ledcWrite(2, MOTOR_SPEED);
+  
+  Serial.println("Action: Close Gripper");
+}
+
+// Function to control servo angles
+void setServoAngle(int servoNumber, int angle) {
+  angle = constrain(angle, 0, 180);
+  switch (servoNumber) {
+    case 1:
+      servo1.write(angle);
+      Serial.println("Action: Set Servo 1 to " + String(angle));
+      break;
+    case 2:
+      servo2.write(angle);
+      Serial.println("Action: Set Servo 2 to " + String(angle));
+      break;
+    case 3:
+      servo3.write(angle);
+      Serial.println("Action: Set Servo 3 to " + String(angle));
+      break;
+    case 4:
+      servo4.write(angle);
+      Serial.println("Action: Set Servo 4 to " + String(angle));
+      break;
+    default:
+      Serial.println("Unknown Servo Number");
+      break;
+  }
+}
+
+// Function to handle incoming commands
+void handleCommand(std::string command) {
+  // Define Car Commands
+  if (command == "CAR_FORWARD") {
+    moveForward();
+  }
+  else if (command == "CAR_BACKWARD") {
+    moveBackward();
+  }
+  else if (command == "CAR_LEFT") {
+    turnLeft();
+  }
+  else if (command == "CAR_RIGHT") {
+    turnRight();
+  }
+  else if (command == "CAR_STOP") {
+    stopMotors();
+    Serial.println("Action: Stop Car Motors");
+  }
+  
+  // Define Gripper Commands
+  else if (command == "GRIPPER_OPEN") {
+    openGripper();
+  }
+  else if (command == "GRIPPER_CLOSE") {
+    closeGripper();
+  }
+  
+  // Define Servo Commands (12 Buttons)
+  else if (command == "SERVO1_UP") {
+    int currentAngle = servo1.read();
+    setServoAngle(1, currentAngle + 10);
+  }
+  else if (command == "SERVO1_DOWN") {
+    int currentAngle = servo1.read();
+    setServoAngle(1, currentAngle - 10);
+  }
+  else if (command == "SERVO2_UP") {
+    int currentAngle = servo2.read();
+    setServoAngle(2, currentAngle + 10);
+  }
+  else if (command == "SERVO2_DOWN") {
+    int currentAngle = servo2.read();
+    setServoAngle(2, currentAngle - 10);
+  }
+  else if (command == "SERVO3_UP") {
+    int currentAngle = servo3.read();
+    setServoAngle(3, currentAngle + 10);
+  }
+  else if (command == "SERVO3_DOWN") {
+    int currentAngle = servo3.read();
+    setServoAngle(3, currentAngle - 10);
+  }
+  else if (command == "SERVO4_UP") {
+    int currentAngle = servo4.read();
+    setServoAngle(4, currentAngle + 10);
+  }
+  else if (command == "SERVO4_DOWN") {
+    int currentAngle = servo4.read();
+    setServoAngle(4, currentAngle - 10);
+  }
+  
+  else {
+    Serial.println("Unknown Command");
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println("ESP32 BLE Control Initialized");
+
+  // Initialize Motors and Servos
+  initMotors();
+  initServos();
+
+  // Initialize BLE
+  BLEDevice::init("RoboticAssistant"); // Name of the BLE device
+
+  BLEServer *pServer = BLEDevice::createServer();
+  BLEService *pService = pServer->createService(SERVICE_UUID);
+
+  BLECharacteristic *pCharacteristic = pService->createCharacteristic(
+                                         CHARACTERISTIC_UUID,
+                                         BLECharacteristic::PROPERTY_READ |
+                                         BLECharacteristic::PROPERTY_WRITE
+                                       );
+
+  pCharacteristic->setCallbacks(new MyCallbacks());
+
+  pCharacteristic->setValue("Ready to Receive Commands");
+  pService->start();
+
+  // Start advertising
+  BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
+  pAdvertising->addServiceUUID(SERVICE_UUID);
+  pAdvertising->setScanResponse(true);
+  pAdvertising->setMinPreferred(0x06);  // Functions that help with iPhone connections issue
+  pAdvertising->setMinPreferred(0x12);
+  BLEDevice::startAdvertising();
+  Serial.println("BLE Advertised Successfully. Waiting for Connections...");
+}
+
+void loop() {
+  // Nothing to do here. All actions are handled in callbacks.
+  delay(1000);
+}
