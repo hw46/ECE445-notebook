@@ -1,0 +1,99 @@
+Week 8
+Date: October 14, 2024
+Objective: First Round PCBway Orders and Teamwork Evaluation
+Record:
+
+Main Ideas from Project Proposal:
+Highlighted the importance of efficient PCB manufacturing and quality component sourcing to ensure the reliability and performance of the robotic assistant.
+
+Bibliographic References:
+
+Reviewed additional datasheets for the Adafruit TB6612 motor driver breakout boards to ensure correct implementation in the PCB design.
+Consulted PCB manufacturing guidelines to optimize layout for manufacturability and cost-effectiveness.
+Diagrams and Schematics:
+
+Submitted the First Round PCBway Orders by 4:45 PM, ensuring that all design specifications, including component placements and trace widths, meet manufacturing requirements.
+Figure 15: First Round PCBway Order Confirmation
+Design Problems and Decisions:
+
+Component Verification: Verified that all components selected for the PCB are compatible and available for timely manufacturing.
+Cost Management: Balanced component quality with budget constraints, ensuring high reliability without exceeding financial limitations.
+Equations and Formulas:
+
+Cost Analysis Calculation:
+Calculated the total cost of components to ensure adherence to budget constraints.
+Total Cost=∑(Quantity×Unit Price)=10×$1.01+2×$6.90+…=$393.53
+Total Cost=10×$1.01+2×$6.90+…=$393.53
+Documentation of Testing and Debugging Process:
+
+Completed and submitted Teamwork Evaluation I by 11:59 PM, reflecting on team collaboration, communication effectiveness, and identifying areas for improvement.
+Documented the evaluation results and discussed strategies to enhance teamwork and project management.
+Important Notes for Debugging:
+
+Ensure that all components received from PCBway match the design specifications to prevent assembly issues.
+Verify that the PCB layout adheres to best practices to minimize manufacturing defects and ensure reliable performance.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Anticipated potential delays in PCB manufacturing and planned to order additional components to mitigate supply chain risks.
+Proposed implementing a systematic quality control process upon receiving PCBs to identify and address any manufacturing defects early.
+Documentation of New Tests:
+
+Scheduled initial power-up tests of the received PCBs to verify correct voltage regulation and component functionality.
+Planned to perform continuity tests on the PCB traces to ensure there are no open or short circuits.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled comprehensive functionality tests post-PCB assembly to ensure all subsystems operate as intended.
+Topic Outlines for Reports:
+
+Finalized the Cost Analysis section, detailing the breakdown of component costs, labor costs, and overall project budget management.
+
+
+
+
+
+
+
+
+
+Date: October 15, 2024
+Objective: Prepare for Second PCBway Order
+Record:
+
+Main Ideas from Project Proposal:
+Emphasized the iterative nature of PCB design and the importance of continuous testing and refinement to achieve optimal system performance.
+
+Bibliographic References:
+
+Reviewed additional resources on PCB thermal management and signal integrity to incorporate advanced solutions in subsequent PCB iterations.
+Diagrams and Schematics:
+
+Updated the PCB layout based on insights gained from the First Round PCBway Order tests, incorporating necessary adjustments to address identified issues.
+Figure 16: Updated PCB Layout for Second Round Order
+Design Problems and Decisions:
+
+Voltage Stability Enhancements: Incorporated additional decoupling capacitors near voltage regulators to further stabilize power supply during peak loads.
+Signal Routing Optimization: Adjusted trace widths and lengths to improve signal integrity and reduce noise interference.
+
+Chose 0.1μF capacitors as standard values for decoupling.
+Documentation of Testing and Debugging Process:
+
+Reviewed the outcomes of the First Round PCBway Order tests, identifying issues related to voltage stability and signal integrity.
+Made necessary adjustments to the PCB layout to address these issues before placing the Second Round PCBway Order.
+Important Notes for Debugging:
+
+Ensure that all decoupling capacitors are placed as close as possible to their respective power pins to maximize noise filtering effectiveness.
+Double-check signal trace lengths and routing to prevent crosstalk and interference between high-speed signals.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Noted that initial voltage stability tests showed minor fluctuations under load. Proposed increasing the capacitance on the power lines to enhance stability.
+Identified potential signal reflection issues and planned to adjust trace impedance by modifying trace widths.
+Documentation of New Tests:
+
+Scheduled comprehensive power stability tests using an oscilloscope to monitor voltage levels under varying load conditions on the updated PCB layout.
+Planned to perform high-frequency signal integrity tests to ensure reliable PWM signal transmission.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled to perform full subsystem integration tests during the Second Round PCBway Order review to validate all design enhancements.
+Topic Outlines for Reports:
+
+Updated the Design Alternatives section to include the adjustments made based on First Round PCBway Order feedback, detailing improvements in voltage stability and signal integrity.
