@@ -1,0 +1,47 @@
+Date: November 11, 2024
+Objective: Fifth Round PCBway Orders and Sign-Up for Demonstrations
+Record:
+
+Main Ideas from Project Proposal:
+Reinforced the importance of thorough testing and demonstration preparation to showcase the robotic assistant's capabilities and reliability during final presentations.
+
+Bibliographic References:
+
+Reviewed additional resources on advanced debugging techniques for PCBs to effectively identify and resolve any lingering issues.
+Consulted presentation guidelines to enhance the effectiveness of upcoming demonstrations.
+Diagrams and Schematics:
+
+Submitted the Fifth Round PCBway Orders by 4:45 PM after passing the audit, incorporating all necessary design modifications based on previous testing feedback.
+Design Problems and Decisions:
+
+Servo Motor Overload: Identified that some servo motors were unable to handle the increased torque demands due to extended arm lengths. Decided to upgrade to higher-torque servo motors to meet performance requirements.
+Power Distribution: Implemented an additional power supply channel dedicated to the upgraded servo motors to prevent overloading existing voltage regulators.
+Equations and Formulas:
+
+Power Distribution Equation:
+Calculated the total power distribution to ensure that the additional servo motors are adequately powered without overloading existing systems.
+𝑃𝑎𝑑𝑑𝑖𝑡𝑖𝑜𝑛𝑎𝑙=𝑉×𝐼=7.8𝑉×1𝐴=7.8𝑊
+Ensured that the new power supply channel can handle the additional 7.8W required by the upgraded servo motors.
+Documentation of Testing and Debugging Process:
+
+Signed up for Demonstration and Presentation sessions, ensuring that all team members are prepared to present their respective subsystems and functionalities.
+Prepared materials for upcoming mock demonstrations, including updated presentation slides and demonstration scripts highlighting system capabilities and performance enhancements.
+Coordinated with team members to ensure that all aspects of the robotic assistant are ready for demonstration, including power stability, servo motor performance, and remote control responsiveness.
+Important Notes for Debugging:
+
+Ensure that the upgraded servo motors are correctly integrated into the power subsystem to prevent voltage drops and maintain torque performance.
+Verify that all demonstration materials accurately represent the system's capabilities and are free from technical inaccuracies.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Detected that the upgraded servo motors were drawing more current than anticipated, causing voltage regulators to strain. Proposed adding a dedicated voltage regulator channel with higher current capacity to support the additional load.
+Noted potential issues with servo motor overheating under extended operation and planned to implement additional cooling measures.
+Documentation of New Tests:
+
+Scheduled to perform comprehensive power distribution tests to ensure that the dedicated voltage regulator channel can handle the additional load without compromising system stability.
+Planned to conduct extended servo motor operation tests to verify torque performance and thermal stability.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled full system integration tests once the Fifth Round PCBs are received and assembled, ensuring that all subsystems operate harmoniously and meet design specifications.
+Topic Outlines for Reports:
+
+Updated the Final Performance Tests and Design Verification section, detailing the planned tests and expected outcomes to validate the robotic assistant's functionality and reliability.
