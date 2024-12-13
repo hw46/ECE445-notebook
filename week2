@@ -1,0 +1,76 @@
+Date: September 2, 2024
+Objective: Project Approval and Safety Training
+Record:
+
+Main Ideas from Project Proposal:
+Emphasized the importance of safety and regulatory compliance in the design and implementation of the robotic assistant, ensuring user safety and system reliability.
+
+Design Problems and Decisions:
+
+Safety Compliance: Determined the need for force-limiting features in the robotic arm to prevent excessive force during item handling.
+Component Sourcing: Identified reliable suppliers for high-quality components to ensure system durability and performance.
+Equations and Formulas:
+
+Torque Calculation for Servo Motors:𝑇=𝐹×(𝑟×sin⁡(𝑎))T=F×(r×sin(a))Where 𝐹=𝑚×𝑔F=m×g, 𝑟=0.1𝑚r=0.1m, 𝑎=90∘a=90∘ 𝑇=1.962𝑁×(0.1𝑚×1)=0.1962𝑁𝑚
+T=1.962N×(0.1m×1)=0.1962Nm
+Documentation of Testing and Debugging Process:
+
+Completed laboratory safety training, understanding protocols for handling electronic components and tools.
+
+Monitor temperature of voltage regulators during testing to prevent overheating.
+Ensure all connections in the breadboard setup are secure to avoid intermittent faults.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Addressed potential overheating by verifying that the input voltage does not exceed the maximum voltage difference as per LM1117 specifications.
+Proposed using heat sinks for voltage regulators if overheating persists during prolonged use.
+
+Planned to measure voltage regulation under varying loads to ensure stability across different operating conditions.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled performance tests for the power subsystem once all components are integrated into the PCB design.
+Topic Outlines for Reports:
+
+Outlined the Subsystem Requirements section, detailing specifications for the Car System and Remote System.
+
+
+
+
+
+Date: September 3, 2024
+Objective: Finalize Project Proposal
+Record:
+
+Main Ideas from Project Proposal:
+Consolidated the project goals and methodologies, emphasizing the integration of mechanical and electronic subsystems to achieve seamless item retrieval and transportation.
+
+Included references to datasheets and component manuals for the TB6612 motor driver and LM1117 voltage regulator.
+Reviewed additional academic papers on robotic arm control and remote system integration for enhanced design insights.
+Diagrams and Schematics:
+
+Updated the subsystem diagrams to include detailed connections between the microcontroller, motor drivers, and voltage regulators.
+
+Design Problems and Decisions:
+
+Microcontroller Integration: Decided to use the ESP32-S3's dual-core processing capabilities to handle simultaneous control of motors and camera data processing.
+Remote Interface Design: Chose to implement a user-friendly Android application interface with joysticks and switches for intuitive control.
+Equations and Formulas:
+Documentation of Testing and Debugging Process:
+
+Conducted initial tests on the breadboard setup to verify voltage outputs from the LM1117 regulators.
+Documented voltage readings and confirmed they matched expected values within the tolerance range.
+Important Notes for Debugging:
+
+Ensure resistor values are precise to achieve accurate voltage regulation.
+Double-check connections on the breadboard to prevent short circuits.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Noted slight discrepancies in voltage outputs due to resistor tolerances and planned to use precision resistors for higher accuracy in the final PCB design.
+Documentation of New Tests:
+
+Scheduled load tests to evaluate voltage stability under different current draws, simulating real-world operating conditions.
+Documentation of Final Performance Tests and Design Verification:
+
+Planned comprehensive testing of the power subsystem once integrated into the PCB to ensure reliable performance.
+Topic Outlines for Reports:
+
+Developed outlines for the Design Review and Design Alternatives sections, preparing to discuss potential issues and solutions.
