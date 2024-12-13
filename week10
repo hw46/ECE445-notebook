@@ -1,0 +1,88 @@
+Date: October 28, 2024
+Objective: Third Round PCBway Orders
+Record:
+
+Main Ideas from Project Proposal:
+Continued the iterative design and testing process to refine the PCB layout and subsystem integration, ensuring all components operate reliably under expected conditions.
+
+Consulted additional application notes on the Adafruit TB6612 motor driver breakout boards to optimize motor control configurations.
+Reviewed technical documentation on servo motor torque requirements to ensure adequate power supply and control signals.
+Diagrams and Schematics:
+
+Submitted the Third Round PCBway Orders by 4:45 PM, incorporating all design modifications based on previous testing and feedback.
+Design Problems and Decisions:
+
+Torque Optimization: Identified the need for increased torque in servo motors due to the extended robotic arm lengths. Decided to source more powerful servo motors to meet torque requirements.
+Power Supply Support: Determined the necessity of an additional power supply channel to support the upgraded servo motors without overloading existing regulators.
+
+Confirmed that the upgraded servo motors can provide at least 1.716Nm to handle the increased torque requirements.
+Documentation of Testing and Debugging Process:
+
+Continued developing the mechanical subsystems, focusing on integrating more powerful servo motors with the robotic arm.
+Conducted torque tests on the upgraded servo motors to verify their ability to handle the increased load.
+Documented test results, confirming that the new servo motors meet the required torque specifications.
+Important Notes for Debugging:
+
+Ensure that the new servo motors are compatible with the existing control signals and power supply configurations.
+Verify that the additional power supply channels are correctly integrated to prevent overloading and ensure stable operation.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Identified that the existing voltage regulators were insufficient for the upgraded servo motors. Proposed adding a dedicated voltage regulator channel to support the increased power demands.
+Noted potential issues with increased heat dissipation due to higher current draw and planned to implement additional cooling measures.
+Documentation of New Tests:
+
+Scheduled to perform comprehensive torque tests on the upgraded servo motors to ensure they operate reliably under full load.
+Planned to test the dedicated voltage regulator channel to verify stable power delivery to the servo motors.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled full subsystem integration tests once the Third Round PCBs are received and assembled, ensuring that all components operate cohesively and meet design specifications.
+Topic Outlines for Reports:
+
+Updated the Design Alternatives section to include the selection and integration of more powerful servo motors, detailing the rationale and benefits of this decision.
+
+
+
+
+
+
+Date: October 29, 2024
+Objective: Mechanical Subsystem Integration
+Record:
+
+Main Ideas from Project Proposal:
+Focused on the integration of mechanical components with electronic control systems to achieve precise and reliable robotic arm movements, ensuring seamless item retrieval and transportation.
+
+Reviewed additional sources on servo motor control and torque optimization to enhance the performance of the robotic arm.
+Consulted mechanical engineering resources on load distribution and structural stability for extended robotic arms.
+
+Finalized the Mechanical Subsystem schematic, detailing the integration of upgraded servo motors and additional power supply channels.
+Design Problems and Decisions:
+
+Structural Stability: Ensured that the extended robotic arm maintains structural integrity under load by reinforcing joint connections and optimizing component placement.
+Load Distribution: Implemented balanced load distribution to prevent undue stress on any single component, enhancing overall system reliability.
+Equations and Formulas:
+
+Distributed the load evenly across multiple servo motors to maintain stability and prevent torque fatigue.
+Documentation of Testing and Debugging Process:
+
+Assembled the robotic arm with upgraded servo motors and connected them to the control subsystem.
+Conducted initial movement tests to verify that servo motors respond accurately to control signals and can handle the extended load.
+Documented any issues encountered during assembly, such as misalignment of joints or unexpected resistance in motor movements.
+Important Notes for Debugging:
+
+Ensure that all mechanical connections are secure to prevent loosening during operation.
+Verify that servo motors receive clean and stable power to maintain precise control over movements.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Identified issues with servo motor responsiveness under extended load conditions and proposed recalibrating the control signals to achieve smoother movements.
+Noted that certain joints exhibited higher resistance and planned to lubricate them to reduce friction and improve movement efficiency.
+Documentation of New Tests:
+
+Scheduled to perform comprehensive movement tests, including pick-up and placement of various items, to assess the robotic arm's performance under different load conditions.
+Planned to test the stability of the robotic arm during extended operations to ensure long-term reliability.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled to conduct full system functionality tests once all mechanical components are integrated, ensuring that the robotic arm operates seamlessly with the control and power subsystems.
+Topic Outlines for Reports:
+
+Updated the Tolerance Analysis section to include the results from the Mechanical Subsystem Integration tests, detailing the effectiveness of load distribution and structural stability enhancements.
