@@ -1,0 +1,87 @@
+Date: October 21, 2024
+Objective: Second Round PCBway Orders
+Record:
+
+Main Ideas from Project Proposal:
+Reinforced the importance of iterative testing and refinement in the PCB manufacturing process to achieve a reliable and efficient robotic assistant.
+
+Reviewed additional datasheets for the LM1117 voltage regulator and Adafruit TB6612 motor driver breakout boards to ensure correct component integration in the Second Round PCB layout.
+Diagrams and Schematics:
+
+Submitted the Second Round PCBway Orders by 4:45 PM, incorporating all design modifications from the previous testing phase.
+Design Problems and Decisions:
+
+Voltage Stability Enhancements: Added additional decoupling capacitors near all voltage regulators to further stabilize power supply during dynamic loads.
+Signal Trace Optimization: Adjusted PWM signal traces to minimize length and reduce potential signal reflections, enhancing signal integrity.
+
+Calculated to achieve an impedance of approximately 50Ω to minimize reflections.
+Documentation of Testing and Debugging Process:
+
+Began assembling the power subsystems for the Car System, focusing on voltage regulation and stability.
+Tested voltage outputs from the LM1117 regulators on the updated PCB layout to verify stability and adherence to specifications.
+Important Notes for Debugging:
+
+Ensure that all added decoupling capacitors are correctly soldered and placed close to their respective voltage regulator pins.
+Verify that all signal traces meet impedance requirements to prevent signal integrity issues.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Identified minor voltage drops during high-load testing and proposed increasing the trace width for power lines to reduce resistance.
+Noted potential issues with servo motor torque under extended arm lengths and planned to implement additional power supply support.
+Documentation of New Tests:
+
+Scheduled to perform comprehensive voltage stability tests under maximum load conditions to validate the effectiveness of added decoupling capacitors.
+Planned to use a network analyzer to test the impedance of signal traces and ensure compliance with design specifications.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled full subsystem integration tests once the Second Round PCBs are received, ensuring that all components operate harmoniously and meet design requirements.
+Topic Outlines for Reports:
+
+Updated the Tolerance Analysis section to include the results from the Second Round PCBway Order tests, detailing the effectiveness of voltage stability enhancements and signal trace optimizations.
+
+
+
+
+
+
+
+Date: October 22, 2024
+Objective: Power Subsystem Development
+Record:
+
+Main Ideas from Project Proposal:
+Focused on ensuring stable and reliable power delivery to all subsystems, crucial for the consistent operation of the robotic assistant.
+
+Reviewed application notes on the LM1117 voltage regulator for optimal usage in high-current applications.
+Studied best practices for implementing H-bridge motor drivers to ensure efficient and reliable motor control.
+Diagrams and Schematics:
+
+Finalized the Power Subsystem schematic, incorporating additional decoupling capacitors and heat dissipation solutions.
+Design Problems and Decisions:
+
+Heat Dissipation: Decided to incorporate aluminum heat sinks on all voltage regulators and motor drivers to manage thermal loads effectively.
+Capacitor Placement: Strategically placed decoupling capacitors near power pins of all active components to enhance power stability and reduce noise.
+Equations and Formulas:
+
+Documentation of Testing and Debugging Process:
+
+Assembled the power subsystems on the updated PCBs and connected them to the robotic arm components.
+Tested voltage outputs under varying load conditions to ensure stability and compliance with specifications.
+Documented voltage readings and observed thermal performance of voltage regulators and motor drivers.
+Important Notes for Debugging:
+
+Monitor temperature of heat sinks during initial testing to ensure effective heat dissipation.
+Verify that all decoupling capacitors are properly connected to prevent power supply instability.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Detected minor voltage fluctuations during load testing and proposed increasing the capacitance for enhanced filtering.
+Observed slight overheating in motor drivers under prolonged operation and planned to implement additional cooling measures if necessary.
+Documentation of New Tests:
+
+Scheduled to perform extended load testing to evaluate the thermal performance of voltage regulators and motor drivers with heat sinks.
+Planned to use thermal imaging to identify hotspots and optimize heat sink placement.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled to integrate the power subsystems with the mechanical and control subsystems for comprehensive system testing in the upcoming weeks.
+Topic Outlines for Reports:
+
+Finalized the Tolerance Analysis section, detailing the effectiveness of power stability enhancements and thermal management solutions based on testing results.
