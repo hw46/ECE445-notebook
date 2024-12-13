@@ -1,0 +1,73 @@
+Date: August 27, 2024
+Objective: Define Project Scope and Objectives
+Record:
+
+Main Ideas from Project Proposal:
+Expanded on the need for an Item Retrieval Robotic Assistant to assist individuals with mobility challenges by reducing the physical effort required to retrieve items.
+
+Diagrams and Schematics:
+
+Developed detailed subsystem diagrams for the Power, Mechanical, and Control subsystems within both the Car System and Remote System.
+Design Problems and Decisions:
+
+Power Regulation: Determined the necessity for separate voltage regulation for servo motors and wheel motors to ensure stable performance.
+Camera Integration: Decided to incorporate a real-time camera system for visual feedback, addressing the need for precise remote control.
+Equations and Formulas:
+
+Voltage Regulator Equation:
+𝑉𝑜𝑢𝑡=𝑉𝑅𝐸𝐹×(1+𝑅2𝑅1)V out =V REF ×(1+ R1R2)Where 𝑉𝑅𝐸𝐹=1.25𝑉V REF =1.25V
+Documentation of Testing and Debugging Process:
+
+Researched suitable components for voltage regulation to match servo and wheel motor requirements.
+Initiated voltage regulation calculations based on the LM1117 datasheet.
+Important Notes for Debugging:
+
+Ensure that voltage regulators can handle maximum current draw without overheating.
+Incorporate thermal management solutions for high-power components to prevent failure.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Evaluated potential issues with Bluetooth latency and planned to test real-time control responsiveness early in the development phase.
+Documentation of New Tests:
+
+Planned voltage output tests for selected regulators using breadboards to verify regulation accuracy.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled subsystem integration tests for the upcoming weeks to verify overall system functionality.
+
+
+
+Date: August 27, 2024
+Objective: Define Project Scope and Objectives
+Record:
+
+Main Ideas from Project Proposal:
+Expanded on the need for an Item Retrieval Robotic Assistant to assist individuals with mobility challenges by reducing the physical effort required to retrieve items.
+
+Diagrams and Schematics:
+
+Developed detailed subsystem diagrams for the Power, Mechanical, and Control subsystems within both the Car System and Remote System.
+Design Problems and Decisions:
+
+Power Regulation: Determined the necessity for separate voltage regulation for servo motors and wheel motors to ensure stable performance.
+Camera Integration: Decided to incorporate a real-time camera system for visual feedback, addressing the need for precise remote control.
+Equations and Formulas:
+
+Voltage Regulator Equation:
+𝑉𝑜𝑢𝑡=𝑉𝑅𝐸𝐹×(1+𝑅2𝑅1)V out =V REF ×(1+ R1R2)Where 𝑉𝑅𝐸𝐹=1.25𝑉V REF =1.25V
+Documentation of Testing and Debugging Process:
+
+Researched suitable components for voltage regulation to match servo and wheel motor requirements.
+Initiated voltage regulation calculations based on the LM1117 datasheet.
+Important Notes for Debugging:
+
+Ensure that voltage regulators can handle maximum current draw without overheating.
+Incorporate thermal management solutions for high-power components to prevent failure.
+Analysis and Proposed Solutions for Debugging Problems:
+
+Evaluated potential issues with Bluetooth latency and planned to test real-time control responsiveness early in the development phase.
+Documentation of New Tests:
+
+Planned voltage output tests for selected regulators using breadboards to verify regulation accuracy.
+Documentation of Final Performance Tests and Design Verification:
+
+Scheduled subsystem integration tests for the upcoming weeks to verify overall system functionality.
